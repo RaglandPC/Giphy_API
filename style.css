@@ -1,0 +1,15 @@
+button {
+  color: black;
+  background: rgb(0, 175, 250);
+  border: solid black 1px;
+  margin: 10px;
+}
+div,
+form,
+input {
+  margin: 10px;
+}
+
+#music-form {
+float: right;
+}

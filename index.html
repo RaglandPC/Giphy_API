@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Giphy</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+
+
+
+</head>
+
+<body>
+
+  <div class="container">
+    <h1>Giphy</h1>
+    <br>
+
+
+    <!-- Movies will Get Dumped Dere -->
+    <div id="musicGEN-view"></div>
+
+    <!-- Rendered Buttons will get Dumped Here  -->
+    <div id="buttons-view"></div>
+
+    <form id="music-form">
+      <label for="music-input">Add a new Music</label>
+      <input type="text" id="music-input">
+      <br>
+      <!-- Button triggers new movie to be added -->
+      <input id="add-music" type="submit" value="Add a new music">
+    </form>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript"></script>
+    <script>
+
+var musicGEN = ["Blues", "Country", "EDM", "Jazz", "Reggae", "Rap"];
+
+function displayMusicInfo(evt) {
+  var music = evt.currentTarget.innerText;
+
+  var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=ZZShI1PABDmDce82Rq8yIAftW20j7BLA&limit=10&offset=0&rating=G&lang=en&q=" + music;
+//https://api.giphy.com/v1/gifs/search?
+//  api_key=ZZShI1PABDmDce82Rq8yIAftW20j7BLA
+//  &q=music
+//  &limit=10
+//  &offset=0
+//  &rating=G
+//  &lang=en
+  //Create an AJAX call for music
+
+    $.ajax({
+      url: queryURL,
+      method: 'GET'
+    }).then(function(response) {
+      var musicGifsArray = response.data;
+      console.log(musicGifsArray);
+      // Creating div to hold msuic.then(fuction(response)
+      var musicDIV = $("<div class='music'>").text(response.data);
+
+// for ref gif data.images.fixed_width
+
+  });
+
+};
+
+function renderButtons() {
+  $("#buttons-view").empty();
+
+
+  for (var i = 0; i < musicGEN.length; i++) {
+    var a = $("<button>");
+
+    // hook up click event to button
+    /*a.on("click", function(evt) {
+      // when a is clicked need to ref r in url to pull up music gif
+      console.log(evt);
+      var musicName = evt.currentTarget.innerText;
+      displayMusicInfo(musicName);
+    });*/
+    a.addClass("music-btn");
+
+    a.text(musicGEN[i]);
+
+    $("#buttons-view").append(a);
+  }
+}
+
+$("#add-music").on("click", function(e) {
+  event.preventDefault();
+
+  var music = $("#music-input").val().trim();
+
+  musicGEN.push(music);
+
+  renderButtons();
+
+});
+$(document).on("click", ".music-btn", displayMusicInfo);
+
+renderButtons();
+
+
+
+
+</script>
+
+
+
+
+</body>
+</html>
