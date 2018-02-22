@@ -23,6 +23,8 @@
     <!-- Rendered Buttons will get Dumped Here  -->
     <div id="buttons-view"></div>
 
+
+
     <form id="music-form">
       <label for="music-input">Add a new Music</label>
       <input type="text" id="music-input">
@@ -30,6 +32,7 @@
       <!-- Button triggers new movie to be added -->
       <input id="add-music" type="submit" value="Add a new music">
     </form>
+      <div id="images"></div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript"></script>
     <script>
@@ -55,8 +58,17 @@ function displayMusicInfo(evt) {
     }).then(function(response) {
       var musicGifsArray = response.data;
       console.log(musicGifsArray);
-      // Creating div to hold msuic.then(fuction(response)
+      // Creating div to hold msuic.then(fuction(response)\
       var musicDIV = $("<div class='music'>").text(response.data);
+      for (var i = 0; i <= 10; i++) {
+        console.log(i);
+        console.log(response.data[i].images.fixed_width.url);
+      var iUrl = response.data[i].images.fixed_width.url;
+      var musicImage = $("<img>")
+      musicImage.attr("src", iUrl,);
+      musicImage.attr("alt", "music image");
+      $("#images").prepend(musicImage);
+    }
 
 // for ref gif data.images.fixed_width
 
@@ -70,6 +82,7 @@ function renderButtons() {
 
   for (var i = 0; i < musicGEN.length; i++) {
     var a = $("<button>");
+
 
     // hook up click event to button
     /*a.on("click", function(evt) {

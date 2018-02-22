@@ -8,8 +8,25 @@ div,
 form,
 input {
   margin: 10px;
+
+}
+
+body {
+  background-color: rgb(59, 144, 166);
+}
+
+#music-form {
+  margin: 0;
+}
+
+#images {
+  width: 900px;
+  margin: 20px;
 }
 
 #music-form {
 float: right;
+background-color: rgb(0, 200, 149);
+border: solid black 2px;
+padding: 10px;
 }
