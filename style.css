@@ -24,9 +24,15 @@ h1 {
 }
 
 #gif {
-  width: 1400px;
-  margin: 20px;
+  columns: 2;
+
+
+
 }
+
+
+
+
 
 
 #music-form {
@@ -38,7 +44,7 @@ margin-right: 200px;
 
 
 }
-img {
+img  {
   width: 190px;
   height: 200px;
   margin: 10px;
