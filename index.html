@@ -65,7 +65,7 @@
 
           var musicDIV = $("<div class='music'>")
 
-          for (var i = 0; i <= 10; i++) {
+          for (var i = 0; i < response.data.length - 1; i++) {
 
             var rating = response.data[i].rating;
             var r = $("<p>").text("Rating: " + rating);
