@@ -17,6 +17,7 @@
   <div class="container">
     <h1>Music Genre Gif's</h1>
     <br>
+    <h1>Click the Gif to make it move</h1>
 
 
     <!-- Movies will Get Dumped Dere -->
@@ -45,7 +46,7 @@
       function displayMusicInfo(evt) {
         var music = evt.currentTarget.innerText;
 
-        var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=ZZShI1PABDmDce82Rq8yIAftW20j7BLA&limit=10&offset=0&rating=G&lang=en&q=" + music;
+        var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=ZZShI1PABDmDce82Rq8yIAftW20j7BLA&limit=12&offset=0&rating=G&lang=en&q=" + music;
 
         // var staticURL = "https://media4.giphy.com/media/q0JV5wyTwz4CQ/480w_s.jpg";
         //
@@ -65,7 +66,7 @@
 
           var musicDIV = $("<div class='music'>")
 
-          for (var i = 0; i < response.data.length - 1; i++) {
+          for (var i = 0; i < response.data.length; i++) {
 
             var rating = response.data[i].rating;
             var r = $("<p>").text("Rating: " + rating);
